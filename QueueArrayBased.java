@@ -1,3 +1,13 @@
+/**
+ * Lab4 - QueueArrayBased
+ * Array-based (circular) implementation of the ADT Queue.
+ * displayQueue() was added to print the queue horizontally,
+ * marking the front and the back, so the contents can be
+ * visually confirmed.
+ *
+ * @author Vlastimil Finger (B00176858)
+ */
+
 public class QueueArrayBased implements QueueInterface {
   private final int MAX_QUEUE = 50; // maximum size of queue
   private Object[] items;
@@ -63,4 +73,26 @@ public class QueueArrayBased implements QueueInterface {
     }  // end if
   }  // end peek
    
+  /**
+   * Prints the queue horizontally, front item first, and marks the
+   * front and the back. 
+   */
+  
+  public void displayQueue() {
+    if (isEmpty()) {
+      System.out.println("Queue: (empty)");
+    }
+    else {
+      System.out.print("Queue: front -> [");
+      for (int i = 0; i < count; i++) {
+        // the items wrap around the array, so count on from front
+        System.out.print(items[(front+i) % MAX_QUEUE]);
+        if (i < count-1) {
+          System.out.print(", ");
+        }
+      }  // end for
+      System.out.println("] <- back");
+    }  // end if
+  }  // end displayQueue
+
 } // end QueueArrayBased
