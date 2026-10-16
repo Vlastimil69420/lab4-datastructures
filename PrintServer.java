@@ -62,6 +62,9 @@ public class PrintServer
             System.out.println(e.getMessage());
           }
           break;
+        case "4":
+          queue.dequeueAll();
+          break;
         case "5":
           queue.displayQueue();
           break;
